@@ -1,13 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NutriPersonal HealthConnect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NutriPersonal HealthConnect</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8f5;
+      color: #173b2a;
+    }
+
+    header {
+      background: #1f8f5f;
+      color: white;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 15px;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 25px 18px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+
+    .welcome p {
+      color: #557064;
+      line-height: 1.5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px 15px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    .card .icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #687a70;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 20px;
+      background: #1f8f5f;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #176d48;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #718078;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>NutriPersonal HealthConnect</h1>
-  <p>Bem-vindo ao nosso sistema de saúde e nutrição.</p>
+
+  <header>
+    <h1>NutriPersonal</h1>
+    <p>HealthConnect</p>
+  </header>
+
+  <main>
+
+    <section class="welcome">
+      <h2>Bem-vindo! 👋</h2>
+      <p>
+        Seu espaço para acompanhar informações de saúde,
+        alimentação e bem-estar de forma simples e organizada.
+      </p>
+
+      <button onclick="iniciar()">
+        Começar
+      </button>
+    </section>
+
+    <section class="cards">
+
+      <div class="card">
+        <div class="icon">🥗</div>
+        <h3>Nutrição</h3>
+        <p>Acompanhe informações sobre alimentação.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">❤️</div>
+        <h3>Saúde</h3>
+        <p>Organize seus dados de saúde.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Acompanhamento</h3>
+        <p>Visualize sua evolução.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>Registros</h3>
+        <p>Consulte seus registros.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    NutriPersonal HealthConnect
+  </footer>
+
+  <script>
+    function iniciar() {
+      alert("Bem-vindo ao NutriPersonal HealthConnect!");
+    }
+  </script>
+
 </body>
 </html>
