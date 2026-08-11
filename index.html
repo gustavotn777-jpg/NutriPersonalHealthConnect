@@ -22,14 +22,38 @@ const W={0:["Recuperação","Caminhada tranquila + mobilidade","recovery"],1:["M
 carregarDados();
   function render(){const n=new Date();date.textContent=n.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"});const w=W[n.getDay()];today.innerHTML=`<h3>${w[0]}</h3><p>${w[1]}</p><span class="pill">Programado para hoje</span>`;weekList.innerHTML=[1,2,3,4,5,6,0].map(d=>`<div class="exercise ${W[d][2]}"><b>${names[d]} — ${W[d][0]}</b><br><span class="small">${W[d][1]}</span>${d===n.getDay()?"<br><span class='pill'>Hoje</span>":""}</div>`).join("");historyTable.innerHTML=acts.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td></tr>`).join("");}
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));document.getElementById(b.dataset.tab).classList.remove("hidden")});render();
-document.getElementById("arquivoAtividades").addEventListener("change", async (e) => {
+document.getElementById("arquivoAtividades").addEventListener("change", async e => {
   const arquivo = e.target.files[0];
   if (!arquivo) return;
 
   const texto = await arquivo.text();
+  const linhas = texto.trim().split(/\r?\n/);
 
-  localStorage.setItem("nutriAtividadesImportadas", texto);
+  const cab = linhas[0].split(",");
+  const importadas = linhas.slice(1).map(linha => {
+    const valores = linha.split(",");
+    const obj = {};
 
+    cab.forEach((c, i) => {
+      obj[c.trim()] = (valores[i] || "").trim();
+    });
+
+    return obj;
+  });
+
+  localStorage.setItem("nutri_atividades", JSON.stringify(importadas));
+
+  importadas.forEach(a => {
+    const data = a.date || a.data || a.Date || a.Data || "";
+    const atividade = a.activity || a.atividade || a.Activity || a.Atividade || "Atividade";
+    const duracao = a.duration || a.duracao || a.Duration || a.Duração || "";
+
+    if (data) {
+      acts.unshift([data, atividade, duracao]);
+    }
+  });
+
+  render();
   alert("Atividades importadas com sucesso!");
 });
 </script></body></html>
