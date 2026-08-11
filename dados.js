@@ -1,4 +1,4 @@
-const dados = {
+ const dados = {
   saude: [],
   treinos: []
 };
@@ -9,6 +9,7 @@ function salvarDados() {
 
 function carregarDados() {
   const salvos = localStorage.getItem("nutriPersonalDados");
+
   if (salvos) {
     Object.assign(dados, JSON.parse(salvos));
   }
